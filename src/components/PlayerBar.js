@@ -15,18 +15,18 @@ class PlayerBar extends Component {
               }
             />
           </button>
-          <button id="next">
+          <button id="next" onClick={this.props.handleNextClick}>
             <span className="icon ion-md-skip-forward" />
           </button>
         </section>
         <section id="time-control">
           <div className="current-time">–:––</div>
-          <input type="range" className="seek-bar" value="0" />
+          <input type="range" className="seek-bar" defaultValue="0" />
           <div className="total-time">–:––</div>
         </section>
         <section id="volume-control">
           <div className="icon ion-volume-low" />
-          <input type="range" className="seek-bar" value="80" />
+          <input type="range" className="seek-bar" defaultValue="80" />
           <div className="icon ion-volume-high" />
         </section>
       </section>
