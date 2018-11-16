@@ -12,7 +12,9 @@ class Album extends Component {
     this.state = {
       album: album,
       currentSong: album.songs[0],
-      isPlaying: false
+      isPlaying: false,
+      activeHoverIndex: null,
+      activeSongIndex: null
     };
 
     this.audioElement = document.createElement("audio");
@@ -34,16 +36,37 @@ class Album extends Component {
     this.setState({ currentSong: song });
   }
 
-  handleSongClick(song) {
+  handleSongClick(song, index) {
     const isSameSong = this.state.currentSong === song;
+    this.setState({ activeSongIndex: index });
+
     if (this.state.isPlaying && isSameSong) {
       this.pause();
+      this.setState({ activeSongIndex: null });
     } else {
       if (!isSameSong) {
         this.setSong(song);
       }
       this.play();
     }
+  }
+
+  handleSongHoverOn(index) {
+    this.setState({ activeHoverIndex: index });
+  }
+
+  handleSongHoverOff(index) {
+    this.setState({ activeHoverIndex: null });
+  }
+
+  handlePlayPauseIcons(index) {
+    if (this.state.activeHoverIndex === index) {
+      if (this.state.activeSongIndex === index) {
+        return <span className="icon ion-md-pause" />;
+      }
+      return <span className="icon ion-md-play" />;
+    }
+    return index + 1;
   }
 
   render() {
@@ -62,7 +85,7 @@ class Album extends Component {
             <div id="release-info">{this.state.album.releaseInfo}</div>
           </div>
         </section>
-        <table id="song-list">
+        <table id="song-list" cellSpacing="0" cellPadding="2">
           <colgroup>
             <col id="song-number-column" />
             <col id="song-title-column" />
@@ -73,9 +96,13 @@ class Album extends Component {
               <tr
                 className="song"
                 key={index}
-                onClick={() => this.handleSongClick(song)}
+                onClick={() => this.handleSongClick(song, index)}
+                onMouseEnter={() => this.handleSongHoverOn(index)}
+                onMouseLeave={() => this.handleSongHoverOff(index)}
               >
-                <td>{index + 1}</td>
+                <td className="song-number">
+                  {this.handlePlayPauseIcons(index)}
+                </td>
                 <td>{song.title}</td>
                 <td>{song.duration}</td>
               </tr>
