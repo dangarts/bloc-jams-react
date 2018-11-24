@@ -149,6 +149,26 @@ class Album extends Component {
     return index + 1;
   }
 
+  formatTime(filterTime) {
+    let time = filterTime;
+    //console.log(typeof(parseFloat(time)) + " " + time);
+
+    if (  time === undefined ||
+          time === null ||
+          time === Boolean) {
+      return "-:--";
+    }
+  
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time - minutes * 60);
+  
+    let newTime = "";
+    newTime += "" + minutes + ":" + (seconds < 10 ? "0" : "");
+    newTime += "" + seconds;
+  
+    return newTime;
+  }
+
   render() {
     return (
       <section className="album">
@@ -184,7 +204,7 @@ class Album extends Component {
                   {this.handlePlayPauseIcons(index)}
                 </td>
                 <td>{song.title}</td>
-                <td>{song.duration}</td>
+                <td>{this.formatTime(song.duration)}</td>
               </tr>
             ))}
           </tbody>
@@ -192,12 +212,13 @@ class Album extends Component {
         <PlayerBar
           isPlaying={this.state.isPlaying}
           currentSong={this.state.currentSong}
-          currentTime={this.audioElement.currentTime}
-          duration={this.audioElement.duration}
+          currentTime ={this.formatTime(this.audioElement.currentTime)}
+          duration={this.formatTime(this.audioElement.duration)}
           handleSongClick={() => this.handleSongClick(this.state.currentSong)}
           handlePrevClick={() => this.handlePrevClick()}
           handleNextClick={() => this.handleNextClick()}
           handleTimeChange={(e) => this.handleTimeChange(e)}
+          newTimeInputValue={this.audioElement.currentTime / this.audioElement.duration}
           handleVolumeChange={(e) => this.handleVolumeChange(e)}
         />
       </section>
