@@ -9,7 +9,7 @@ class Album extends Component {
     const album = albumData.find(album => {
       return album.slug === this.props.match.params.slug;
     });
- 
+
     this.state = {
       album: album,
       currentSong: album.songs[0],
@@ -105,7 +105,6 @@ class Album extends Component {
   }
 
   handleVolumeChange(e) {
- 
     this.audioElement.volume = e.target.value;
     this.setState({ volume: e.target.value });
   }
@@ -124,6 +123,7 @@ class Album extends Component {
     const currentIndex = this.state.album.songs.findIndex(
       song => this.state.currentSong === song
     );
+
     const totalSongs = this.state.album.songs;
     const newIndex = Math.min(totalSongs.length - 1, currentIndex + 1);
     const newSong = this.state.album.songs[newIndex];
@@ -139,11 +139,16 @@ class Album extends Component {
     this.setState({ activeHoverIndex: null });
   }
 
-  handlePlayPauseIcons(index) {
+  handlePlayPause(index) {
+    const currentSongPlayingIndex = this.state.album.songs.findIndex(
+      song => this.state.currentSong === song
+    );
+
+    if (this.state.isPlaying === true && currentSongPlayingIndex === index) {
+      return <span className="icon ion-md-pause" />;
+    }
+
     if (this.state.activeHoverIndex === index) {
-      if (this.state.activeSongIndex === index) {
-        return <span className="icon ion-md-pause" />;
-      }
       return <span className="icon ion-md-play" />;
     }
     return index + 1;
@@ -151,21 +156,18 @@ class Album extends Component {
 
   formatTime(filterTime) {
     let time = filterTime;
-    //console.log(typeof(parseFloat(time)) + " " + time);
 
-    if (  time === undefined ||
-          time === null ||
-          time === Boolean) {
+    if (time === undefined || time === null || time === Boolean) {
       return "-:--";
     }
-  
+
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time - minutes * 60);
-  
+
     let newTime = "";
     newTime += "" + minutes + ":" + (seconds < 10 ? "0" : "");
     newTime += "" + seconds;
-  
+
     return newTime;
   }
 
@@ -200,9 +202,7 @@ class Album extends Component {
                 onMouseEnter={() => this.handleSongHoverOn(index)}
                 onMouseLeave={() => this.handleSongHoverOff(index)}
               >
-                <td className="song-number">
-                  {this.handlePlayPauseIcons(index)}
-                </td>
+                <td className="song-number">{this.handlePlayPause(index)}</td>
                 <td>{song.title}</td>
                 <td>{this.formatTime(song.duration)}</td>
               </tr>
@@ -212,14 +212,16 @@ class Album extends Component {
         <PlayerBar
           isPlaying={this.state.isPlaying}
           currentSong={this.state.currentSong}
-          currentTime ={this.formatTime(this.audioElement.currentTime)}
+          currentTime={this.formatTime(this.audioElement.currentTime)}
           duration={this.formatTime(this.audioElement.duration)}
           handleSongClick={() => this.handleSongClick(this.state.currentSong)}
           handlePrevClick={() => this.handlePrevClick()}
           handleNextClick={() => this.handleNextClick()}
-          handleTimeChange={(e) => this.handleTimeChange(e)}
-          newTimeInputValue={this.audioElement.currentTime / this.audioElement.duration}
-          handleVolumeChange={(e) => this.handleVolumeChange(e)}
+          handleTimeChange={e => this.handleTimeChange(e)}
+          newTimeInputValue={
+            this.audioElement.currentTime / this.audioElement.duration
+          }
+          handleVolumeChange={e => this.handleVolumeChange(e)}
         />
       </section>
     );
@@ -227,4 +229,3 @@ class Album extends Component {
 }
 
 export default Album;
-
