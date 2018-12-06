@@ -174,26 +174,34 @@ class Album extends Component {
   render() {
     return (
       <section className="album">
-        {this.props.match.params.slug} Album will go here
+        {/* {this.props.match.params.slug} Album will go here */}
+        
+        
         <section id="album-info">
+          <div className="album-details">
+            <h1 id="album-title">{this.state.album.title}</h1>
+            <h2 className="artist">by {this.state.album.artist}</h2>
+            <div id="release-info">{this.state.album.releaseInfo}</div>
+          </div>
           <img
             id="album-cover-art"
             src={this.state.album.albumCover}
             alt={this.state.album.title}
           />
-          <div className="album-details">
-            <h1 id="album-title">{this.state.album.title}</h1>
-            <h2 className="artist">{this.state.album.artist}</h2>
-            <div id="release-info">{this.state.album.releaseInfo}</div>
-          </div>
-        </section>
-        <table id="song-list" cellSpacing="0" cellPadding="2">
+          
+          <table id="song-list" cellSpacing="0" cellPadding="5">
+          
+          {/* <tbody className="album-songs"> */}
           <colgroup>
             <col id="song-number-column" />
             <col id="song-title-column" />
             <col id="song-duration-column" />
           </colgroup>
-          <tbody className="album-songs">
+              <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Length</th>
+              </tr>
             {this.state.album.songs.map((song, index) => (
               <tr
                 className="song"
@@ -207,8 +215,11 @@ class Album extends Component {
                 <td>{this.formatTime(song.duration)}</td>
               </tr>
             ))}
-          </tbody>
+          {/* </tbody> */}
         </table>
+
+        </section>
+        
         <PlayerBar
           isPlaying={this.state.isPlaying}
           currentSong={this.state.currentSong}

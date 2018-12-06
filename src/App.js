@@ -10,17 +10,30 @@ class App extends Component {
     return (
       <div className="App">
         <header>
+          <h1 id="logo">
+            <Link to="/"><img src="/assets/images/bloc_jams_logo.png" alt="Bloc Jams Logo" /></Link>
+          </h1>
+          <div id="tagline"><p>Turn up the music!</p></div>
           <nav>
-            <Link to="/">Landing</Link>
-            <Link to="/library">Library</Link>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/library">Library</Link>
+              </li>
+            </ul>
           </nav>
-          <h1>Bloc Jams</h1>
         </header>
         <main>
           <Route exact path="/" component={Landing} />
           <Route path="/library" component={Library} />
           <Route path="/album/:slug" component={Album} />
         </main>
+
+        <footer>
+          <p>Jamify music player &copy; 2018</p>
+        </footer>
       </div>
     );
   }
