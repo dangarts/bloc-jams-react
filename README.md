@@ -1,4 +1,4 @@
-# Chat App
+# React Jam
 
 A React based music player with music albums and it's list of songs.
 
@@ -47,6 +47,8 @@ You will also see any lint errors in the console.
 - HTML Audio player
 
 ## Todo
+
+- Repurpose css
 
 ## Status
 
