@@ -1,4 +1,4 @@
-# React Jam
+# Dang Jam
 
 A React based music player with music albums and it's list of songs.
 
@@ -21,7 +21,7 @@ This is a personal project to understand the usage of react-router in React..
 
 ## Screenshots
 
-![Project Screenshot](./public/screenshot-project.png)
+![Project Screenshot](./public/readme-screenshot.png)
 
 ## Technologies
 
