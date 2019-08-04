@@ -21,7 +21,7 @@ This is a personal project to understand the usage of react-router in React..
 
 ## Screenshots
 
-![Project Screenshot](./public/readme-screenshot.png)
+![Project Screenshot](./public/readme-screenshot.jpg)
 
 ## Technologies
 
