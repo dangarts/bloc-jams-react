@@ -30,7 +30,7 @@ header {
   justify-content: flex-start;
   align-content: center;
   margin: auto;
-  padding: 1rem 1rem 0 1rem;
+  padding: 7px 1rem 0 1rem;
   box-sizing: border-box;
 }
 
@@ -43,7 +43,8 @@ header {
   font-size: 1.4em;
   font-style: italic;
   width: 100%;
-  color: #555;
+  color: rgb(39, 39, 39);
+  font-weight: bold;
   margin: auto;
   padding: 0 1rem;
   box-sizing: border-box;
@@ -150,7 +151,7 @@ main {
 }
 
 .landing-card:hover {
-  border: 4px solid rgba(242, 60, 124, 0.3);
+  /* border: 4px solid rgba(242, 60, 124, 0.3); */
   box-sizing: border-box;
 }
 
@@ -175,9 +176,9 @@ main {
 }
 
 .point .icon {
-  color: rgb(242, 60, 124);
+  color: #086dcc;
   font-size: 7rem;
-  text-shadow: 0px 0px 15px rgba(242, 60, 124, 0.564);
+  text-shadow: 0px 0px 15px #086dcc;
 }
 
 /* LIBRARY CONTENT ******************************************************************* */
@@ -228,9 +229,19 @@ main {
 /* ALBUM DETAIL CONTENT ******************************************************************* */
 .album {
   padding-top: 150px;
-  background-color: #000000;
+  background-color: #111f2c;
+  /* background-image: linear-gradient(147deg, #145324 0%, #033a10 74%); */
+  background-color: #52acff;
+  background-image: linear-gradient(
+    180deg,
+    #52acff 20%,
+    #ffea5f 80%,
+    #ffffff 100%
+  );
+
+  padding-bottom: 25px;
   color: white;
-  text-align: left; 
+  text-align: left;
 }
 
 #album-info {
@@ -241,136 +252,138 @@ main {
   margin-bottom: 100px;
 }
 
-  #album-info .album-details {
-    display: grid;
-    grid-column: 2 / 4;
-    grid-row: 1 / 2;
-    grid-template-columns: max-content max-content 1fr;
-    grid-template-rows: 1fr 1fr;
-    
-  }
+#album-info .album-details {
+  display: grid;
+  grid-column: 2 / 4;
+  grid-row: 1 / 2;
+  grid-template-columns: max-content max-content 1fr;
+  grid-template-rows: 1fr 1fr;
+}
 
-      .album-details #album-title {
-        grid-column: 1 / 2;
-        grid-row: 1 / 2;
-        color: rgb(14, 252, 133);
-        font-size: 2rem;
-      }
+.album-details #album-title {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  color: rgb(0, 0, 0);
+  font-size: 2rem;
+}
 
-      .album-details .artist {
-        grid-column: 2 / 3;
-        grid-row: 1 / 2;
+.album-details .artist {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
 
-        display: grid;
-        font-size: 1rem;
-        align-items: end;
-        margin-left: 1rem;
-        padding-bottom: 6px;
-      }
+  display: grid;
+  font-size: 1rem;
+  align-items: end;
+  margin-left: 1rem;
+  padding-bottom: 6px;
+}
 
-      .album-details #release-info{
-        grid-column: 1 / 4;
-        grid-row: 2 / 3;
-        color: rgb(174, 174, 174);
-      }
+.album-details #release-info {
+  grid-column: 1 / 4;
+  grid-row: 2 / 3;
+  color: rgb(255, 255, 255);
+}
 
-  #album-info #album-cover-art {
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
-    border-radius: 25px;
-    width: 400px;
-  }
+#album-info #album-cover-art {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  border-radius: 15px;
+  width: 400px;
+}
 
-  #album-info #song-list {
-    grid-column: 3 / 4;
-    grid-row: 2 / 3;
-    font-size: 1.5rem;
-  }
+#album-info #song-list {
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
+  font-size: 1.5rem;
+}
 
-  #song-list{
-    width: 100%;
-  }
+#song-list {
+  width: 100%;
+}
 
-  #song-list .ion-md-play {
-    color:rgb(14, 252, 133);
-  }
+#song-list .ion-md-play {
+  color: rgb(242, 60, 124);
+}
 
-  #song-list .ion-md-pause {
-    color: rgb(242, 60, 124);
-  }
+#song-list .ion-md-pause {
+  color: rgb(0, 0, 0);
+}
 
-  #song-list td{
-    border-bottom: 1px solid rgb(33, 33, 33);
-  }
-  #song-number-column{
-    width: 3rem;
-  }
+#song-list td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.493);
+}
+#song-number-column {
+  width: 3rem;
+}
 
-  #song-list th{
-    color: #555;
-    font-size: .7rem;
-  }
+#song-list th {
+  color: rgb(0, 0, 0);
+  font-size: 0.7rem;
+}
 
 /* ALBUM PLAYER BAR CONTENT ******************************************************************* */
 
-.player-bar{
-  background: rgb(36, 36, 36);
+.player-bar {
+  background: rgb(12, 12, 12);
   text-align: center;
   display: grid;
-  padding: 3rem 3rem 6rem 3rem;
-  grid-gap:2rem;
+  padding: 1.5rem;
+  grid-gap: 1rem;
+  border-radius: 20px;
+  margin: 0px 20vw;
+  opacity: 0.9;
 }
 
-    .player-bar #buttons > button{
-      font-size: 2rem;
-      background: none;
-      border: none;
-      color: white;
-      padding: 0 1rem;
-    }
+.player-bar #buttons > button {
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: white;
+  padding: 0 1rem;
+}
 
-    .player-bar #time-control{
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-      grid-column-gap: 1rem;
-      color: rgb(113, 113, 113);
-    }
+.player-bar #time-control {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column-gap: 1rem;
+  color: rgb(113, 113, 113);
+}
 
-        .player-bar #time-control .current-time {
-          text-align: right;
-        }
-        .player-bar #time-control .seek-bar {
-          grid-column: 2 / 4;
-          width: 100%;
-        }
-        .player-bar #time-control .total-time {
-          text-align: left;
-        }
+.player-bar #time-control .current-time {
+  text-align: right;
+}
+.player-bar #time-control .seek-bar {
+  grid-column: 2 / 4;
+  width: 100%;
+}
+.player-bar #time-control .total-time {
+  text-align: left;
+}
 
-    .player-bar #volume-control{
-      display: grid;
-      grid-column-gap: 1rem;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-      color: rgb(113, 113, 113);
-      font-size: 1.5rem;
-    }
+.player-bar #volume-control {
+  display: grid;
+  grid-column-gap: 1rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  color: rgb(113, 113, 113);
+  font-size: 1.5rem;
+}
 
-        .player-bar #volume-control .ion-md-volume-low {
-          text-align: right;
-        }
-        .player-bar #volume-control .seek-bar {
-          grid-column: 2 / 4;
-          width: 100%;
-        }
-        .player-bar #volume-control .ion-md-volume-high {
-          text-align: left;
-        }
+.player-bar #volume-control .ion-md-volume-low {
+  text-align: right;
+}
+.player-bar #volume-control .seek-bar {
+  grid-column: 2 / 4;
+  width: 100%;
+}
+.player-bar #volume-control .ion-md-volume-high {
+  text-align: left;
+}
 
 /* FOOTER CONTENT ******************************************************************* */
 footer {
-  background: #ebebeb;
-  color: #3a3a3a;
-  font-size: 0.8rem;
-  padding: 3em ;
+  background: #086dcc;
+  color: rgba(255, 255, 255, 0.699);
+  font-size: 1rem;
+  padding: 3em;
   margin-top: 3rem;
 }

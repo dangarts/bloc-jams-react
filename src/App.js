@@ -39,7 +39,7 @@ class App extends Component {
         </main>
 
         <footer>
-          <p>Jamify music player &copy; 2019</p>
+          <p>Dang Jams &copy; 2019</p>
         </footer>
       </div>
     );
