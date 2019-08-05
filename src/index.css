@@ -234,8 +234,8 @@ main {
   background-color: #52acff;
   background-image: linear-gradient(
     180deg,
-    #52acff 20%,
-    #ffea5f 80%,
+    #2889e4 50%,
+    #fff8bd 80%,
     #ffffff 100%
   );
 
@@ -263,7 +263,7 @@ main {
 .album-details #album-title {
   grid-column: 1 / 2;
   grid-row: 1 / 2;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   font-size: 2rem;
 }
 
